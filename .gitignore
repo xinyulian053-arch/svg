@@ -1,0 +1,15 @@
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+data/uploads/*
+data/extracted/*
+data/parsed/*
+data/index/*
+data/app.db
+!data/uploads/.gitkeep
+!data/extracted/.gitkeep
+!data/parsed/.gitkeep
+!data/index/.gitkeep

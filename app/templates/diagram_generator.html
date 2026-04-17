@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ app_name }} - 图表生成器</title>
+  <link rel="stylesheet" href="/static/css/style.css?v=20260417-3">
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    window.__diagramMermaid = mermaid;
+  </script>
+  <script defer src="/static/js/diagram_generator.js?v=20260417-3"></script>
+</head>
+<body>
+  <main class="page-shell diagram-page">
+    <section class="hero-card">
+      <div class="eyebrow">Diagram Generator</div>
+      <h1>Markdown 结构图可视化</h1>
+      <p class="subtitle">输入 Markdown 文本，选择一级标题同排规则，实时生成 Mermaid 和 SVG。</p>
+      <div class="tips">
+        <span>Markdown 自动解析结构树</span>
+        <span>一级标题同排可视化配置</span>
+        <span>Mermaid 实时渲染</span>
+        <span>SVG 自动缩放整齐显示</span>
+      </div>
+    </section>
+
+    <section class="card diagram-stack">
+      <div class="diagram-left">
+        <div class="section-header">
+          <h2>输入 Markdown</h2>
+          <p>格式：<code># 根标题</code> + <code>## 一级标题</code> + 列表子项</p>
+        </div>
+        <textarea id="diagram-json-input" class="code-box diagram-json-input"></textarea>
+        <div class="group-header-row">
+          <div class="block-label group-label">一级标题同排选择（同组最多 3 个）</div>
+          <button id="add-row-group-btn" class="ghost-btn small-btn" type="button">新增分组</button>
+        </div>
+        <div id="row-group-editor" class="group-editor muted">请先输入 Markdown，再点击“解析一级标题”。</div>
+        <div class="action-row">
+          <button id="diagram-parse-btn" class="ghost-btn" type="button">解析一级标题</button>
+          <button id="diagram-generate-btn" class="primary-btn" type="button">生成图表</button>
+          <a href="/" class="ghost-btn">返回首页</a>
+        </div>
+        <p id="diagram-status" class="muted">准备就绪。</p>
+        <label class="block-label" for="process-result-box">处理结果</label>
+        <textarea id="process-result-box" class="code-box process-result-box" readonly>暂无处理结果。</textarea>
+      </div>
+
+      <div class="diagram-right">
+        <div class="section-header">
+          <h2>Mermaid 预览</h2>
+        </div>
+        <div id="diagram-mermaid-panel" class="mermaid-panel"></div>
+
+        <label class="block-label" for="diagram-mermaid-code">Mermaid 代码</label>
+        <textarea id="diagram-mermaid-code" class="code-box" readonly></textarea>
+
+        <label class="block-label">SVG 预览</label>
+        <div id="diagram-svg-panel" class="figure-panel"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="error-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="error-modal-title">
+    <div class="modal-card">
+      <button id="error-modal-close" class="modal-close-btn" type="button" aria-label="关闭" onclick="window.__closeDiagramErrorModal && window.__closeDiagramErrorModal()">×</button>
+      <h3 id="error-modal-title">处理失败</h3>
+      <p id="error-modal-message" class="muted">发生错误，请关闭后继续修改。</p>
+    </div>
+  </div>
+</body>
+</html>
