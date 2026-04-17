@@ -62,6 +62,18 @@ uvicorn app.main:app --reload
 2. 访问控制
 ```
 
+## 页面示例截图
+
+> 建议把截图放在仓库的 `docs/images/` 目录下。
+
+### 前端页面示例
+
+![前端页面示例](docs/images/frontend-page.png)
+
+### 运行结果页面示例
+
+![运行结果页面示例](docs/images/runtime-result.png)
+
 ## 常用环境变量
 
 参考 `.env.example`：
