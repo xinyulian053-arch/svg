@@ -1,4 +1,4 @@
-# Markdown 结构图生成工具
+# Markdown 结构图生成工具(已经打包成.exe文件直接使用)
 
 一个基于 `FastAPI + Jinja2` 的本地可视化项目。  
 输入 Markdown 结构文本，前端可配置一级标题同排分组，生成：
